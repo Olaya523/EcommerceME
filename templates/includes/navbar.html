@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 <header class="section-header">
     <nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
     <div class="container">
@@ -22,7 +22,7 @@
     <div class="row align-items-center">
         <div class="col-lg-2 col-md-3 col-6">
             <a href="./" class="brand-wrap">
-                <img class="logo" src="{%static './images/tadeo.jpg' %}">
+                <img class="logo" src="{%static './images/tadeito.png' %}">
             </a> <!-- brand-wrap.// -->
         </div>
         <div class="col-lg col-sm col-md col-6 flex-grow-0">
@@ -32,8 +32,7 @@
                 </button>
                 <div class="dropdown-menu">
                     {% for category in links %}
-                    <a class="dropdown-item" href="{{ category.get_url }}">{{category.category_name}} </a>
-
+                    <a class="dropdown-item" href="{{ category.get_url }}">{{ category.category_name }} </a>
                     {% endfor %}
 
                     
