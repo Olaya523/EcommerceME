@@ -3,6 +3,9 @@ from .forms import  RegistrationForm
 from .models import Account
 from  django.contrib import messages, auth
 from  django.contrib.auth.decorators import login_required
+from carts.views import _cart_id
+from carts.models import Cart, CartItem
+
 # Create your views here.
 def register(request):
         form = RegistrationForm()
@@ -32,7 +35,20 @@ def login(request):
             password = request.POST['password']
             user =  auth.authenticate(email=email, password=password)
             if user is not None:
+                
+                try:
+                        cart = Cart.objects.get(_cart_id=_cart_id(request))
+                        is_car_items_exist = CartItem.objects.filter(cart=cart).exists()
+                        if is_car_items_exist:
+                                cart_item = CartItem.objects.filter(cart=cart)
+                                for item in cart_item:
+                                        item.user = user
+                                        item.save()
+                except:
+                       pass        
+
                 auth.login(request, user)
+                messages.error(request, 'Ha iniciado sesion correctamente')
                 return redirect('home')
             else:
                 messages.error(request, 'Las credenciales son incorrectas')
