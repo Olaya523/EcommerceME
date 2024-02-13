@@ -5,6 +5,7 @@ from  django.contrib import messages, auth
 from  django.contrib.auth.decorators import login_required
 from carts.views import _cart_id
 from carts.models import Cart, CartItem
+import requests
 
 # Create your views here.
 def register(request):
@@ -47,14 +48,26 @@ def login(request):
                 except:
                        pass        
 
+
                 auth.login(request, user)
                 messages.error(request, 'Ha iniciado sesion correctamente')
-                return redirect('home')
+
+                url = request.META.get('HTTP_REFERER')
+                try:
+                        query = requests.utils.urlparse(url).query
+                        params = dict(x.split('=') for x in query.split('&'))
+                        if 'next' in params:
+                              nextPage = params['next']
+                              return redirect(nextPage)
+                except:
+                       return redirect('home')
+
             else:
                 messages.error(request, 'Las credenciales son incorrectas')
                 return redirect('login')
 
         return render(request, 'accounts/login.html')
+
 @login_required(login_url='login')
 def logout(request):
         auth.logout(request)
