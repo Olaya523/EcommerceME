@@ -1,3 +1,10 @@
+#from apminsight import initialize_agent
+#initialize_agent ({
+ #      "appname": "zohotest",
+  #     "exporter_status_port" : "5096",
+  #     "exporter_data_port" : "5097",
+#})
+
 """
 Django settings for ecommerce project.
 
