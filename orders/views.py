@@ -7,6 +7,9 @@ from datetime import date
 # Create your views here.
 
 
+def payments(request):
+    return render(request, 'orders/payments.html')
+
 def place_order(request, total = 0, quantity = 0):
     current_user = request.user
     cart_items = CartItem.objects.filter(user=current_user)
@@ -53,15 +56,19 @@ def place_order(request, total = 0, quantity = 0):
             d = date(yr, mt, dt)
             current_date = d.strftime("%y%m%d")
 
-            order_numer = current_date + str(data.id)
-                        # Suponiendo que 'data' es una instancia de un modelo que tiene un campo 'order_number'
-            # Aquí estás concatenando la fecha actual con el ID de 'data' para formar el número de pedido
             order_number = current_date + str(data.id)
 
-            # Guardar el número de pedido en el campo 'order_number' de 'data'
             data.order_number = order_number
-            return redirect('checkout')
+            data.save()
+
+            order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
+            context = {
+                'order' : order,
+                'cart_items' : cart_items,
+                'total' : total,
+                'tax' : tax,
+                'grand_total' : grand_total,
+            }
+            return render(request, 'orders/payments.html', context)
     else:
         return redirect('checkout')
-
-
