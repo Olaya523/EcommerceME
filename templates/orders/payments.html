@@ -125,14 +125,19 @@
             return cookieValue;
         }
 
-        
+    
+
+    </script>
+    <script>
+
+
         var amount = "{{ grand_total }}"
         var url = "{% url 'payments' %}"
         var csrftoken = document.cookie.match(/csrftoken=([^;]+)/)[1];
         var orderID = "{{ order.order_number }}"
         var payment_method = 'PayPal';
-    </script>
-    <script>
+        var redirect_url = "{% url 'order_complete' %}"
+
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 
@@ -167,8 +172,10 @@
                             status: orderData.status
                         }),
                     })
-                    .then(response => response.json())
-                    .then(data => console.log(data))
+                    .then((response) => response.json())
+                    .then((data) => {
+                        window.location.href = redirect_url + '?order_number=' + data.order_number + '&payment_id=' + data.transID;
+                    });
                 }
             });
         }
