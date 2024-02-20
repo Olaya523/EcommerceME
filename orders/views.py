@@ -4,10 +4,10 @@ from .forms import OrderForm
 from .models import Order, Payment, OrderProduct
 from datetime import date
 import json
-from store.models import Product
-from django.core.mail import EmailMessage
+from .models import Payment, Product
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+
 
 # Create your views here.
 
@@ -15,8 +15,11 @@ from django.http import JsonResponse
 
 def payments(request):
     body = json.loads(request.body)
-    print(body)
-    order = Order.objects.get(user=request.user, is_ordered=False, order_number=body['orderID'])
+    order_number = body['orderID']
+
+    order = Order.objects.get(user=request.user, is_ordered=False, order_number=order_number)
+ 
+
 
     payment = Payment(
         user=request.user,
@@ -51,21 +54,12 @@ def payments(request):
 
     cart_items.delete()  # Eliminar todos los elementos del carrito después de completar la orden
 
-    mail_subject = 'Gracias por tu compra'
-    body = render_to_string('orders/order_recieved_email.html', {
-        'user': request.uer,
-        'order': order,
-    })
-
-    to_email = request.user.email
-    send_email = EmailMessage(mail_subject,body, to=[to_email])
-    send_email.send()
-
     data = {
         'order_number' : order.order_number,
         'transID' : payment.payment_id,
     }
     
+    print(data)
     return JsonResponse(data)
 
 def place_order(request, total = 0, quantity = 0):
@@ -134,5 +128,29 @@ def place_order(request, total = 0, quantity = 0):
 
 
 def order_complete(request):
-    return render(request, 'orders/order_complete.html')
+    order_number = request.GET.get('order_number')
+    transID = request.GET.get('payment_id')
+
+    try:
+        order = Order.objects.get(order_number=order_number, is_ordered=True)
+        ordered_products = order.orderproduct_set.all()
+
+        subtotal = 0
+        for order_product in ordered_products:
+            subtotal += order_product.product_price * order_product.quantity
+
+
+        payment = Payment.objects.get(payment_id=transID)
+
+        context = {
+            'order': order,
+            'ordered_products': ordered_products,
+            'order_number': order.order_number,
+            'transID': payment.payment_id,
+            'payment': payment,
+            'subtotal': subtotal,
+        }
+        return render(request, 'orders/order_complete.html', context)
     
+    except(Payment.DoesNotExist, Order.DoesNotExist):
+        return redirect('home')    
