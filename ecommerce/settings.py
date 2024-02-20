@@ -1,8 +1,9 @@
 #from apminsight import initialize_agent
+
 #initialize_agent ({
- #      "appname": "zohotest",
-  #     "exporter_status_port" : "5096",
-  #     "exporter_data_port" : "5097",
+#        "appname": "eccomerce",
+#        "exporter_status_port" : "5096",
+#        "exporter_data_port" : "5097",
 #})
 
 """
@@ -32,7 +33,7 @@ SECRET_KEY = 'django-insecure-rz#ynij0*)3u^2&cq0_b)42n=i*%7lvnvc-$6_kl40b2*t=i8x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

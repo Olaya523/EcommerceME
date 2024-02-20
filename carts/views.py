@@ -133,6 +133,7 @@ def add_cart(request, product_id):
 
 def remove_cart(request, product_id):
     cart = Cart.objects.get(cart_id=_cart_id(request))
+    print(cart)
     product = get_object_or_404(Product, id=product_id)
     cart_item =  CartItem.objects.get(product=product, cart=cart)
     
