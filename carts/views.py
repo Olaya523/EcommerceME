@@ -3,10 +3,11 @@ from store.models import Product, Variation
 from .models import Cart, CartItem
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse  # Agrega esta línea al principio de tu archivo de vistas
+
 
 
 # Create your views here.
-
 def _cart_id(request):
     cart = request.session.session_key
     if not cart:
@@ -131,9 +132,11 @@ def add_cart(request, product_id):
             cart_item.save()
         return redirect('cart')
 
-def remove_cart(request, product_id):
+
+    return  redirect ('cart')
+
+def remove_cart(request , product_id):
     cart = Cart.objects.get(cart_id=_cart_id(request))
-    print(cart)
     product = get_object_or_404(Product, id=product_id)
     cart_item =  CartItem.objects.get(product=product, cart=cart)
     
@@ -142,11 +145,8 @@ def remove_cart(request, product_id):
         cart_item.save()
     else:
         cart_item.delete()
-
     return  redirect ('cart')
-
-
-
+    
 def remove_cart_item(request, product_id):
     cart = Cart.objects.get(cart_id=_cart_id(request))
     product =  get_object_or_404(Product, id=product_id)

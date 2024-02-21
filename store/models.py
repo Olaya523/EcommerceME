@@ -24,28 +24,21 @@ class Product(models.Model):
 
 
 class VariationManager(models.Manager):
-    def colors(self):
-        return super(VariationManager, self).filter(variation_manager='color', is_active=True)
+    def add_ons(self):
+        return super(VariationManager, self).filter(variation_manager='add_ons', is_active=True)
     
-    def colorsCel(self):
-        return super(VariationManager, self).filter(variation_manager='colorCel', is_active=True)
+    def plug_in(self):
+        return super(VariationManager, self).filter(variation_manager='plug_in', is_active=True)
     
-    def aditions(self):
-        return super(VariationManager, self).filter(variation_manager='adition', is_active=True)
-    
-    def signed(self):
-        return super(VariationManager, self).filter(variation_manager='signed', is_active=True)
-    
-    def cpus(self):
-        return super(VariationManager, self).filter(variation_manager='cpu', is_active=True)
+    def normal(self):
+        return super(VariationManager, self).filter(variation_manager='normal', is_active=True)
     
 variation_category_choice = (
-    ('color','color'),
-    ('color Cel','color cel'),
-    ('adiciones', 'adiciones'),
-    ('firmado', 'firmado'),
-    ('cpu', 'cpu'),
+    ('Add-ons','Add-ons'),
+    ('Plug-in','Plug-in'),
+    ('Normal', 'Normal'),
 )
+
 class Variation(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     variation_category = models.CharField(max_length=100, choices=variation_category_choice)
