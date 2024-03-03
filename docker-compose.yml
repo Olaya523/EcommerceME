@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - .:/app
+      - ./static:/app/static
+      - ./templates:/app/templates
+      - ./media:/app/media
+    ports:
+      - "8000:8000"
+
+
