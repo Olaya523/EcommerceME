@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {%load static %}
 {% block content%}
+<!-- Bootstrap  -->
+<link rel="stylesheet" type="text/css" href="{%static 'css/bootstrap1'%}">
+<link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
 <!-- ========================= SECTION MAIN ========================= -->
 <section class="section-intro padding-y-sm">
 <div class="container">
 
 <div class="intro-banner-wrap">
-	<img src="{%static 'images/banners/mebanner.jpg'%}" class="img-fluid rounded">
+	<img src="{%static 'images/banners/banner1.jpg'%}" class="img-fluid rounded">
 </div>
 
 </div> <!-- container //  -->
@@ -19,11 +22,10 @@
 
 <header class="section-heading">
 	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">Ver Todo</a>
-	<h3 class="section-title">Productos populares</h3>
+	<h3 class="section-title">Bienvenido</h3>
 </header><!-- sect-heading -->
-
 	
-<div class="row">
+<div class="row">	 
 
 	{% for product in  products %}
 	<div class="col-md-3">
@@ -36,6 +38,115 @@
 		</div>
 	</div> <!-- col.// -->
 	{% endfor %}
+	  	  
+	<div class="menu-container">
+		<div class="menu-item active">
+			<a href="{% url 'products_by_category' 'cuentas-bancarias' %}">
+				<img src="{%static 'images/icons/transaction-success.png'%}" alt="Trámites digitales">
+				<p>Trámites digitales</p>
+			</a>
+		</div>
+		<div class="menu-item">
+			<a href="{% url 'products_by_category' 'prestamos' %}">
+				<img src="{%static 'images/icons/business-debt.png'%}" alt="Negociar deuda">
+				<p>Negociar deuda</p>
+			</a>
+		</div>
+		<div class="menu-item">
+			<a href="{% url 'products_by_category' 'tarjetas-de-credito' %}">
+				<img src="{%static 'images/icons/e-payment.png'%}" alt="Pagos">
+				<p>Pagos</p>
+			</a>
+		</div>
+		<div class="menu-item">
+			<a href="ruta_a_pagina_4">
+				<img src="{%static 'images/icons/help.png'%}" alt="Centro de Ayuda">
+				<p>Centro de Ayuda</p>
+			</a>
+		</div>
+		<div class="menu-item">
+			<a href="{% url 'products_by_category' 'seguros' %}">
+				<img src="{%static 'images/icons/digital-certificate.png'%}" alt="Certificados bancarios">
+				<p>Seguros</p>
+			</a>
+		</div>
+		<div class="menu-item">
+			<a href="ruta_a_pagina_6">
+				<img src="{%static 'images/icons/ticket-machine.png'%}" alt="Solicita tu turno">
+				<p>Solicita tu turno</p>
+			</a>
+		</div>
+	</div>
+	
+
+	<div id="fh5co-featured" data-section="locatios">
+		<div class="container">
+			<div class="row text-center fh5co-heading row-padded">
+				<div class="col-md-8 col-md-offset-2">
+					<h2 class="heading to-animate">Sedes</h2>
+					<p class="sub-heading to-animate">Zilker en el mundo</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="fh5co-grid">
+					<div class="fh5co-v-half to-animate-2">
+						<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(https://viajandox.com.co/uploads/Monserrate_1.jpg)"></div>
+						<div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
+							<h2>Bogotá</h2>
+							<span class="pricing">Colombia</span>
+							<p>Av. C. 125 #32- 86, Usaquén, Bogotá, Cundinamarca</p>
+						</div>
+					</div>
+					<div class="fh5co-v-half">
+						<div class="fh5co-h-row-2 to-animate-2">
+							<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(https://media.womondoo.com/media/images/que-ver-santiago.2e16d0ba.fill-1200x768.jpg)"></div>
+							<div class="fh5co-v-col-2 fh5co-text arrow-left">
+								<h2>Santiago de Chile</h2>
+								<span class="pricing">Chile</span>
+								<p>Cra. 4 #22-61, Bogotá</p>
+							</div>
+						</div>
+						<div class="fh5co-h-row-2 fh5co-reversed to-animate-2">
+							<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(https://imagenes.eltiempo.com/files/image_1200_600/uploads/2024/07/12/6691497909224.png)"></div>
+							<div class="fh5co-v-col-2 fh5co-text arrow-right">
+								<h2>Lima</h2>
+								<span class="pricing">Perú</span>
+								<p>Cra. 71d #1-14 Sur, Bogotá</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="fh5co-v-half">
+						<div class="fh5co-h-row-2 fh5co-reversed to-animate-2">
+							<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(https://blogskystorage.s3.amazonaws.com/2021/07/skyairline_skyairline_image_182.jpeg)"></div>
+							<div class="fh5co-v-col-2 fh5co-text arrow-right">
+								<h2>Buenos Aires</h2>
+								<span class="pricing">Argentina</span>
+								<p>20, Tv. 94 #80, Bogotá</p>
+							</div>
+						</div>
+						<div class="fh5co-h-row-2 to-animate-2">
+							<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(https://ecpe2k7qe53.exactdn.com/wp-content/uploads/2020/01/410A3DA6-3D43-4479-BE3E-7049A99C8132-scaled.jpeg?strip=all&lossy=1&ssl=1)"></div>
+							<div class="fh5co-v-col-2 fh5co-text arrow-left">
+								<h2>Quito</h2>
+								<span class="pricing">Ecuador</span>
+								<p>Dg. 72a Sur #27r47, Bogotá</p>
+							</div>
+						</div>
+					</div>
+					<div class="fh5co-v-half to-animate-2">
+						<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKbZgY7P82VBTdeAEoVkjg4unvqc-B-FTJ6w&s)"></div>
+						<div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
+							<h2>Rio de Janeiro</h2>
+							<span class="pricing">Brasil</span>
+							<p>Mucho gomelo paila / Cra. 58d #146-51, Bogotá.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </div> <!-- row.// -->
 
