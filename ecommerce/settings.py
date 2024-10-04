@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 ]
 
 
-CSRF_TRUSTED_ORIGINS = ['http://192.168.15.14'] 
+CSRF_TRUSTED_ORIGINS = ['http://localhost'] 
 
 
 MIDDLEWARE = [

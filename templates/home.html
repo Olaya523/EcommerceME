@@ -9,7 +9,7 @@
 <div class="container">
 
 <div class="intro-banner-wrap">
-	<img src="{%static 'images/banners/banner1.jpg'%}" class="img-fluid rounded">
+	<img src="{%static 'images/banners/mebanner2.jpg'%}" class="img-fluid rounded">
 </div>
 
 </div> <!-- container //  -->
@@ -59,9 +59,9 @@
 			</a>
 		</div>
 		<div class="menu-item">
-			<a href="ruta_a_pagina_4">
+			<a href="{% url 'products_by_category' 'planes-de-ahorro' %}">
 				<img src="{%static 'images/icons/help.png'%}" alt="Centro de Ayuda">
-				<p>Centro de Ayuda</p>
+				<p>Planes de Ahorro</p>
 			</a>
 		</div>
 		<div class="menu-item">
@@ -81,7 +81,7 @@
 
 	<div id="fh5co-featured" data-section="locatios">
 		<div class="container">
-			<div class="row text-center fh5co-heading row-padded">
+			<div class="row text-center1 fh5co-heading row-padded">
 				<div class="col-md-8 col-md-offset-2">
 					<h2 class="heading to-animate">Sedes</h2>
 					<p class="sub-heading to-animate">Zilker en el mundo</p>
@@ -94,7 +94,7 @@
 						<div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
 							<h2>Bogotá</h2>
 							<span class="pricing">Colombia</span>
-							<p>Av. C. 125 #32- 86, Usaquén, Bogotá, Cundinamarca</p>
+							<p>Cra. 3 Este, Bogotá</p>
 						</div>
 					</div>
 					<div class="fh5co-v-half">
@@ -103,7 +103,7 @@
 							<div class="fh5co-v-col-2 fh5co-text arrow-left">
 								<h2>Santiago de Chile</h2>
 								<span class="pricing">Chile</span>
-								<p>Cra. 4 #22-61, Bogotá</p>
+								<p>Morandé 53-83, 8340648 Santiago, Región Metropolitana</p>
 							</div>
 						</div>
 						<div class="fh5co-h-row-2 fh5co-reversed to-animate-2">
@@ -111,7 +111,7 @@
 							<div class="fh5co-v-col-2 fh5co-text arrow-right">
 								<h2>Lima</h2>
 								<span class="pricing">Perú</span>
-								<p>Cra. 71d #1-14 Sur, Bogotá</p>
+								<p>C. Pativilca 180, Pueblo Libre 15084, Peru</p>
 							</div>
 						</div>
 					</div>
@@ -122,7 +122,7 @@
 							<div class="fh5co-v-col-2 fh5co-text arrow-right">
 								<h2>Buenos Aires</h2>
 								<span class="pricing">Argentina</span>
-								<p>20, Tv. 94 #80, Bogotá</p>
+								<p>C1408 Buenos Aires, Argentina</p>
 							</div>
 						</div>
 						<div class="fh5co-h-row-2 to-animate-2">
@@ -130,7 +130,7 @@
 							<div class="fh5co-v-col-2 fh5co-text arrow-left">
 								<h2>Quito</h2>
 								<span class="pricing">Ecuador</span>
-								<p>Dg. 72a Sur #27r47, Bogotá</p>
+								<p>Ave 12 de Octubre, Quito, Ecuador</p>
 							</div>
 						</div>
 					</div>
@@ -139,7 +139,7 @@
 						<div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
 							<h2>Rio de Janeiro</h2>
 							<span class="pricing">Brasil</span>
-							<p>Mucho gomelo paila / Cra. 58d #146-51, Bogotá.</p>
+							<p>Av. Rio de Janeiro - Caju, Rio de Janeiro - RJ, 20931-675, Brazil</p>
 						</div>
 					</div>
 				</div>

@@ -25,18 +25,18 @@ class Product(models.Model):
 
 class VariationManager(models.Manager):
     def add_ons(self):
-        return super(VariationManager, self).filter(variation_manager='add_ons', is_active=True)
+        return super(VariationManager, self).filter(variation_manager='IVA 5%', is_active=True)
     
     def plug_in(self):
-        return super(VariationManager, self).filter(variation_manager='plug_in', is_active=True)
+        return super(VariationManager, self).filter(variation_manager='IVA 7.5%', is_active=True)
     
     def normal(self):
-        return super(VariationManager, self).filter(variation_manager='normal', is_active=True)
+        return super(VariationManager, self).filter(variation_manager='IVA 10%', is_active=True)
     
 variation_category_choice = (
-    ('Add-ons','Add-ons'),
-    ('Plug-in','Plug-in'),
-    ('Normal', 'Normal'),
+    ('IVA 5%','IVA 5%'),
+    ('IVA 7.5%','IVA 7.5%'),
+    ('IVA 10%', 'IVA 10%'),
 )
 
 class Variation(models.Model):

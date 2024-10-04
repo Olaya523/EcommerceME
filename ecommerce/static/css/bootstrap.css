@@ -598,7 +598,7 @@ pre code {
   position: relative;
   width: 100%;
   padding-right: 10px;
-  padding-left: 10px;
+  padding-left: 10px; 
 }
 
 .col {
@@ -9821,6 +9821,12 @@ button.bg-gray-light:focus {
 
 .text-center {
   text-align: center !important;
+  margin-left: 2%;
+}
+
+.text-center1 {
+  text-align: center !important;
+  margin-left: 25%;
 }
 
 @media (min-width: 576px) {
